@@ -1,0 +1,32 @@
+name: Run YouTube Bot Twice Daily
+
+on:
+  schedule:
+    # 5 PM Botswana (UTC+2) = 15:00 UTC
+    - cron: "0 15 * * *"
+    # 7 PM Botswana (UTC+2) = 17:00 UTC
+    - cron: "0 17 * * *"
+  workflow_dispatch:   # allows manual run from Actions tab
+
+jobs:
+  run-youtube-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Restore credentials.json
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
+
+      - name: Run main script
+        run: python main.py
