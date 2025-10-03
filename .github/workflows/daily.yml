@@ -1,4 +1,4 @@
-name: Run YouTube Bot Twice Daily
+name: Run Flux Bot Twice Daily
 
 on:
   schedule:
@@ -6,26 +6,38 @@ on:
     - cron: "0 15 * * *"
     # 7 PM Botswana (UTC+2) = 17:00 UTC
     - cron: "0 17 * * *"
-  workflow_dispatch:   # allows manual run from Actions tab
+  workflow_dispatch:   # allows manual run
 
 jobs:
-  run-youtube-bot:
+  run-flux:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout your repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Set up Python 3.11
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      # 4️⃣ Restore Google credentials
+      - name: Create credentials.json
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
 
+      # 5️⃣ Restore channels.json
+      - name: Create channels.json
+        run: |
+          mkdir -p config
+          echo "${{ secrets.CHANNELS_JSON }}" > config/channels.json
 
-      - name: Run main script
+      # 6️⃣ Run the main script
+      - name: Run Flux main.py
         run: python main.py
