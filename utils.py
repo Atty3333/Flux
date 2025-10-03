@@ -1,4 +1,4 @@
-from win10toast import ToastNotifier
+
 from datetime import datetime, time, timedelta
 import pytz
 from email.mime.text import MIMEText
@@ -72,4 +72,5 @@ def get_path(*path_parts):
     Example: get_path("clips", "source_video.mp4")
     """
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
     return os.path.join(project_root, *path_parts)
