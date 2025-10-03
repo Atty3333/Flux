@@ -7,7 +7,7 @@ class AccountManager:
 
 
         # Build the path to clips/source_video.mp4
-        file_location = get_path( "YOUTUBE_BEAT_BOT","config", "channels.json")
+        file_location = get_path( "config", "channels.json")
         print(file_location)
         with open(file_location) as f:
             self.accounts = json.load(f)
