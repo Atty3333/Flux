@@ -1,4 +1,4 @@
-﻿annotated-types==0.7.0
+annotated-types==0.7.0
 anyio==3.7.1
 beautifulsoup4==4.13.4
 bs4==0.0.2
@@ -42,11 +42,9 @@ pydantic_core==2.33.2
 PyDrive2==1.21.3
 pyOpenSSL==24.2.1
 pyparsing==3.2.3
-pypiwin32==223
 python-dotenv==1.1.1
 pytube==15.0.0
 pytz==2025.2
-pywin32; sys_platform == "win32"
 PyYAML==6.0.2
 requests==2.32.4
 requests-oauthlib==2.0.0
@@ -60,8 +58,11 @@ typing-inspection==0.4.1
 typing_extensions==4.14.1
 uritemplate==4.2.0
 urllib3==2.5.0
-win10toast==0.9
-winotify==1.1.0
 youtube-search-python==1.6.6
 yt-dlp==2025.7.21
 
+# Windows-only packages
+pywin32; sys_platform == "win32"
+pypiwin32; sys_platform == "win32"
+win10toast; sys_platform == "win32"
+winotify; sys_platform == "win32"
