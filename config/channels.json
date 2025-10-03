@@ -1,0 +1,11 @@
+{
+    "Rico": {
+        "drive_token_path": "config//Rico/drive_token.json",
+        "drive_secret_path": "config/Rico/Drive_secret_token.json",
+        "Channel_content": "21 savage",
+        "folder_id":"1HpuF3qgeABNwUJq53wxuPBUbYgpOOT2Q",
+        "youtube_secret_path": "config/Rico/youtube_client_secret.json",
+        "youtube_token_path": "config/Rico/youtube_token.json"        
+    }
+
+}
